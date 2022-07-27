@@ -82,7 +82,6 @@ userSchema.statics.login = async function (email,password) {
     if(!match){
         throw Error('Email or Password are incorrect')
     }
-
     return user
 }
 
