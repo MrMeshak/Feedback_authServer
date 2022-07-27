@@ -4,7 +4,6 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 
 dotenv.config()
-
 const app = express()
 
 //middleware
@@ -16,9 +15,15 @@ app.use((req,res,next) => {
 })
 
 
+//routes
+
+
 
 //connect to DB
-mongoose.connect(process.env.PORT), () => {
-
-})
+mongoose.connect(process.env.MONGO_URI!)
+    .then(()=>{
+        app.listen(process.env.PORT, () => {
+            console.log(`Connected to DB & listening on port ${process.env.PORT}`)
+        })
+    })
 
